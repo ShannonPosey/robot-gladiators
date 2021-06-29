@@ -1,4 +1,9 @@
 {
     "jshint.lintHTML": true,
-    "jshint.config": ""
+    "jshint.config": "",
+    "cSpell.words": [
+        "robo",
+        "roborto",
+        "trumble"
+    ]
 }
