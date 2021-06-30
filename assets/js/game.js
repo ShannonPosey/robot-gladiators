@@ -75,6 +75,9 @@ var fight = function(enemyName) {
     // fight function statements
 };
 
-for(var i = 0; i < enemyNames.length; i++) {
+for (var i = 0; i < enemyNames.length; i++) {
+    var pickedEnemyName = enemyNames[i];
+    enemyHealth = 50;
+    // call fight function with enemy-robot
     fight(enemyNames[i]);
 }
