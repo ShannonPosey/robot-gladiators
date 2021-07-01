@@ -31,8 +31,6 @@ var fight = function(enemy) {
         // remove enemy's health by subtracting the amount set in the playerAttack variable
         enemy.health = Math.max(0, enemy.health - damage);
 
-        pickedEnemyObj.health = randomNumber(40, 60);
-        
         console.log(playerInfo.name + " attacked " + enemy.name + " . " + enemy.name + " now has " + enemy.health + " health remaining.");
 
         // check enemy's health
@@ -80,7 +78,7 @@ var startGame = function(){
         var pickedEnemyObj = enemyInfo[i];
 
         // reset enemyHealth before starting new fight
-        enemy.health = Math.floor(Math.random() * 21) + 40;
+        pickedEnemyObj.health = randomNumber(40, 60);
         // returns value down to its nearest integer
 
         // use debugger to pause script from running and check what's going on at that moment in the code
@@ -90,7 +88,7 @@ var startGame = function(){
      fight(pickedEnemyObj);
 
      // if player is still alive and we're not at the last enemy in the array
-    if (playerInfo.health > 0 && i < enemy.name.length - 1) {
+    if (playerInfo.health > 0 && i < enemyInfo.length - 1) {
         // ask if player wants to use the store before the next round
         var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
 
