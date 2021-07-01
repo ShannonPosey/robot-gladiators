@@ -74,7 +74,12 @@ var fight = function(enemyName) {
         }
     }
 };
-        
+      // function to start a new game
+var startGame = function(){ 
+    // reset player stats
+    playerHealth = 100;
+    playerAttack = 10;
+    playerMoney = 10; 
 for (var i = 0; i < enemyNames.length; i++) {
     // if player is still alive, keep fighting
     if (playerHealth > 0) {
@@ -99,3 +104,49 @@ else{
     break;
 }
 }
+
+// play again
+// startGame();
+// after the loop ends, player us either out of health or enemies to fight, so run the endGame function
+endGame();
+
+};
+
+// function to end the entire game
+var endGame = function() {
+    // if player is still alive, player wins!
+    if (playerHealth > 0) {
+        window.alert("Great job, you've survived the game! You now have a score of " + playerMoney + " .");
+    }
+    else{window.alert("You've lost your robot in battle.");
+}
+    // ask player if they'd like to play again
+    var playAgainConfirm = window.alert("Would you like to play again?");
+    
+    if (playAgainConfirm) {
+        //restart the game
+        startGame();
+    }
+    else{
+        window.alert("Thank you for playing Robot Gladiators! Come back soon!");
+    }
+};
+
+// start the game when the page loads
+startGame();
+
+// Warp the game logic in a startGame() function
+// When player is defeated or there are no more enemies call an endGame() function that 
+//  * Alert the player's total stats
+//  * Ask the player if they want to play again
+//  * if yes, call the startGame() to restart the game
+// After the player skips or defeats an enemy (and there are still more robots to fight)
+//  * Ask the player if they would like to visit the shop
+//      * If no, continue normal
+//  * If so would they like to shop, call the shop() function
+//      * REFILL your health
+//          * if REFILL, subtract money points from player and increase health
+//      * UPGRADE your attack
+//          * if UPGRADE, subtract money points from player and increase attack power    
+//      * LEAVE the store, alert goodbye and exit the function 
+//  * If any other invalid options call shop() again
