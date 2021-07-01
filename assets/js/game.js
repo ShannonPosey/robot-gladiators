@@ -98,8 +98,9 @@ var startGame = function(){
             
         // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
      fight(pickedEnemyName);
+
      // if player is still alive and we're not at the last enemy in the array
-    if (playerHealth > 0 && i < enemyNames.length - 1){
+    if (playerHealth > 0 && i < enemyNames.length - 1) {
         // ask if player wants to use the store before the next round
         var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
 
@@ -118,19 +119,22 @@ var startGame = function(){
 
 // after the loop ends, player us either out of health or enemies to fight, so run the endGame function
 endGame();
-
 };
 
 // function to end the entire game
 var endGame = function() {
+    window.alert("The game has now ended. Let's see how you did!");
+
     // if player is still alive, player wins!
     if (playerHealth > 0) {
         window.alert("Great job, you've survived the game! You now have a score of " + playerMoney + " .");
     }
-    else{window.alert("You've lost your robot in battle.");
+    else{
+        window.alert("You've lost your robot in battle.");
     }
+
     // ask player if they'd like to play again
-    var playAgainConfirm = window.alert("Would you like to play again?");
+    var playAgainConfirm = window.confirm("Would you like to play again?");
     
     if (playAgainConfirm) {
         //restart the game
@@ -174,7 +178,6 @@ var shop = function(){
             else{
                 window.alert("You don't have enough money!");
             }
-
             break;
 
         case "LEAVE": // new case
@@ -194,19 +197,3 @@ var shop = function(){
 
 // start the game when the page loads
 startGame();
-
-// Warp the game logic in a startGame() function
-// When player is defeated or there are no more enemies call an endGame() function that 
-//  * Alert the player's total stats
-//  * Ask the player if they want to play again
-//  * if yes, call the startGame() to restart the game
-// After the player skips or defeats an enemy (and there are still more robots to fight)
-//  * Ask the player if they would like to visit the shop
-//      * If no, continue normal
-//  * If so would they like to shop, call the shop() function
-//      * REFILL your health
-//          * if REFILL, subtract money points from player and increase health
-//      * UPGRADE your attack
-//          * if UPGRADE, subtract money points from player and increase attack power    
-//      * LEAVE the store, alert goodbye and exit the function 
-//  * If any other invalid options call shop() again
