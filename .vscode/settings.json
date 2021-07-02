@@ -2,6 +2,7 @@
     "jshint.lintHTML": true,
     "jshint.config": "",
     "cSpell.words": [
+        "highscore",
         "robo",
         "roborto",
         "trumble"
