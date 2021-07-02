@@ -38,9 +38,30 @@ var fightOrSkip = function () {
     return false;
 };
 
+
 // fight function
 var fight = function(enemy) {
+    // keep track of who goes first
+var isPlayerTurn = true;
+    // randomly change turn order
+if (Math.random() > 0.5){
+    isPlayerTurn = false;
+}
+    // If it is the player-robot's turn:
+    //  * Prompt the fight or skip return
+    //  * Remove damage from enemy-robot's health
+    //  * Check if the enemy-robot has enough health to continue fighting
+
+    // If it is not the player-robot's turn
+    //  * Remove damage from the player-robot's health
+    //  * Check if the player-robot has enough health to continue fighting
+
+    // After the turn is done, switch turns for the next bout of fighting:
+    //  * If the player-robot went first, run the logic for the enemy-robot attacking the player-robot
+    //  * If the enemy-robot went first, run the logic for the player-robot attacking the enemy-robot
+
      while (playerInfo.health > 0 && enemy.health > 0 ){
+         if (isPlayerTurn){
          // ask player if they'd like to fight or skip using fightOrSkip function
         if (fightOrSkip()) {
             // if true, leave fight by breaking loop
@@ -49,21 +70,20 @@ var fight = function(enemy) {
 
         // generate random damage value based on player's attack power
         var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
-        // subtract money from playerMoney for skipping
-        playerInfo.money = Math.max(0, playerInfo.money - 10);
-        console.log("playerInfo.money", playerInfo.money);
-        // break;
         
-        // remove enemy's health by subtracting the amount set in the playerAttack variable
+        // remove enemy's health by subtracting the amount set in the damage variable
         enemy.health = Math.max(0, enemy.health - damage);
-
-        console.log(playerInfo.name + " attacked " + enemy.name + " . " + enemy.name + " now has " + enemy.health + " health remaining.");
+        console.log(
+            playerInfo.name + " attacked " + enemy.name  + " . " + enemy.name + " now has " + enemy.health + " health remaining."
+        );       
 
         // check enemy's health
         if (enemy.health <= 0){
             window.alert(enemy.name + " has died!");
-          // award player money for winning
+          
+            // award player money for winning
           playerInfo.money = playerInfo.Money +20;
+
         // leave while() loop since enemy is dead
         break;
         }
@@ -71,6 +91,9 @@ var fight = function(enemy) {
             window.alert(enemy.name + " still has " +  enemy.health + " health left.");
         }
 
+        // player gets attacked first
+    }
+        else{
         // generate random damage value based on enemy's attack power
         var damage = randomNumber(enemy.attack - 3, enemy.attack);
 
@@ -82,12 +105,16 @@ var fight = function(enemy) {
         // check player's health
         if (playerInfo.health <= 0) {
             window.alert(playerInfo.name + " has died!");
+            // leave while() loop if player if dead
             break;
         }
         else{
             window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
         }
     }
+    // switch turn order for next round
+    isPlayerTurn = !isPlayerTurn;
+}
 };
       // function to start a new game
 var startGame = function(){ 
