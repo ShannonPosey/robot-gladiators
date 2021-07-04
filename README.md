@@ -6,7 +6,7 @@
 
 ### 🏠 [Homepage](https://shannonposey.github.io/robot-gladiators/)
 
-### ✨ [Demo](https://shannonposey.github.io/robot-gladiators/)
+### ✨ [Demo]![marketing demo](./assets/images/robot-gladiators-game.png)
 
 ## Usage
 
